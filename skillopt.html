@@ -460,17 +460,177 @@
 
     .comparison-frame {
       margin-top: 18px;
+      padding: 18px;
+      color: #f8faf7;
       background: #0b1018;
       border: 1px solid var(--line-strong);
       border-radius: 8px;
-      overflow: hidden;
       box-shadow: var(--shadow);
     }
 
-    .comparison-frame img {
-      display: block;
-      width: 100%;
-      background: #0b1018;
+    .comparison-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .comparison-heading span {
+      color: #f4c542;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .comparison-heading h3 {
+      margin: 6px 0 0;
+      font-family: var(--display);
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .comparison-legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      max-width: 560px;
+    }
+
+    .legend-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 26px;
+      padding: 5px 8px;
+      color: rgba(248, 250, 247, 0.82);
+      background: rgba(248, 250, 247, 0.06);
+      border: 1px solid rgba(248, 250, 247, 0.14);
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.67rem;
+    }
+
+    .legend-chip::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: var(--color);
+      border-radius: 3px;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .benchmark-panel {
+      min-width: 0;
+      padding: 14px;
+      background:
+        linear-gradient(180deg, rgba(248, 250, 247, 0.055), rgba(248, 250, 247, 0.02)),
+        rgba(13, 17, 23, 0.72);
+      border: 1px solid rgba(248, 250, 247, 0.13);
+      border-radius: 8px;
+    }
+
+    .benchmark-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+      margin-bottom: 10px;
+    }
+
+    .benchmark-top h4 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 1.28rem;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .delta-pill {
+      flex: none;
+      padding: 5px 8px;
+      color: #87d996;
+      background: rgba(46, 123, 63, 0.2);
+      border: 1px solid rgba(135, 217, 150, 0.5);
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.67rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .bar-stage {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 170px;
+      padding: 24px 8px 22px 34px;
+      background:
+        linear-gradient(rgba(248, 250, 247, 0.08) 1px, transparent 1px) 0 24px / 100% 42px,
+        rgba(0, 0, 0, 0.16);
+      border-left: 1px solid rgba(248, 250, 247, 0.24);
+      border-bottom: 1px solid rgba(248, 250, 247, 0.24);
+      border-radius: 6px;
+    }
+
+    .axis-range {
+      position: absolute;
+      left: 7px;
+      bottom: 6px;
+      color: rgba(248, 250, 247, 0.46);
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      text-transform: uppercase;
+    }
+
+    .method-bar {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      height: max(8px, var(--h));
+      background: var(--color);
+      border-radius: 4px 4px 2px 2px;
+      opacity: 0.86;
+    }
+
+    .method-bar.skillopt {
+      border: 2px solid rgba(248, 250, 247, 0.82);
+      box-shadow: 0 0 16px rgba(135, 217, 150, 0.62);
+      opacity: 1;
+    }
+
+    .method-bar span {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 6px);
+      transform: translateX(-50%);
+      padding: 2px 5px;
+      color: #0b1018;
+      background: #87d996;
+      border-radius: 5px;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .comparison-caption {
+      margin: 14px 0 0;
+      color: rgba(248, 250, 247, 0.62);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      line-height: 1.55;
     }
 
     .caption {
@@ -1059,6 +1219,19 @@
         grid-template-columns: 1fr;
       }
 
+      .comparison-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .comparison-legend {
+        justify-content: flex-start;
+      }
+
+      .comparison-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .hero h1 {
         font-size: 4.1rem;
       }
@@ -1103,6 +1276,7 @@
 
       .method-grid,
       .ablation-summary .mini-list,
+      .comparison-grid,
       .transfer-grid,
       .evolution-footnotes,
       .steps {
@@ -1130,6 +1304,10 @@
       .ledger-stat + .ledger-stat {
         padding-left: 0;
         border-left: 0;
+      }
+
+      .bar-stage {
+        height: 150px;
       }
 
       .chart-toolbar,
@@ -1474,12 +1652,19 @@
         </table>
       </div>
 
-      <figure class="comparison-frame">
-        <img src="skillopt-assets/main-results-comparison.png" alt="Bar charts comparing SkillOpt with no skill, human skill, LLM skill, Trace2Skill, TextGrad, and GEPA across SearchQA, SpreadsheetBench, OfficeQA, DocVQA, LiveMath, and ALFWorld.">
-        <figcaption class="caption">
-          Method comparison from the project video. Bars report per-benchmark direct-chat accuracy averaged over seven target models; SkillOpt is best or tied-best in every panel.
-        </figcaption>
-      </figure>
+      <section class="comparison-frame" aria-labelledby="comparison-title">
+        <div class="comparison-head">
+          <div class="comparison-heading">
+            <span>Method comparison</span>
+            <h3 id="comparison-title">SkillOpt clears the strongest baseline on every benchmark.</h3>
+          </div>
+          <div class="comparison-legend" id="method-comparison-legend" aria-label="Compared methods"></div>
+        </div>
+        <div class="comparison-grid" id="method-comparison-grid" aria-label="Per-benchmark method comparison"></div>
+        <p class="comparison-caption">
+          Rendered from the raw values used in the project-video results scene. Bars report direct-chat benchmark means across seven target models; each panel uses a zoomed y-axis to keep method gaps readable.
+        </p>
+      </section>
 
     </section>
 
@@ -1758,6 +1943,129 @@
     </footer>
   </main>
   <script>
+    const methodComparison = {
+      methods: [
+        { key: "NoSkill", label: "No skill", color: "#7a8290" },
+        { key: "Human", label: "Human skill", color: "#a77bd8" },
+        { key: "LLM", label: "LLM skill", color: "#5a9bdc" },
+        { key: "Trace", label: "Trace2Skill", color: "#8aa9c9" },
+        { key: "TextGrad", label: "TextGrad", color: "#d95b50" },
+        { key: "GEPA", label: "GEPA", color: "#d7b646" },
+        { key: "Ours", label: "SkillOpt", color: "#87d996" }
+      ],
+      benches: [
+        {
+          name: "SearchQA",
+          yMin: 65,
+          yMax: 85,
+          values: { NoSkill: 71.3, Human: 74.5, LLM: 72.9, Trace: 76.5, TextGrad: 76.4, GEPA: 78.1, Ours: 80.0 }
+        },
+        {
+          name: "SpreadsheetBench",
+          yMin: 25,
+          yMax: 55,
+          values: { NoSkill: 32.6, Human: 46.5, LLM: 35.9, Trace: 39.3, TextGrad: 31.3, GEPA: 47.3, Ours: 51.7 }
+        },
+        {
+          name: "OfficeQA",
+          yMin: 25,
+          yMax: 55,
+          values: { NoSkill: 31.0, Human: 48.3, LLM: 29.0, Trace: 35.1, TextGrad: 38.7, GEPA: 47.8, Ours: 52.4 }
+        },
+        {
+          name: "DocVQA",
+          yMin: 70,
+          yMax: 92,
+          values: { NoSkill: 72.3, Human: 86.0, LLM: 86.0, Trace: 87.4, TextGrad: 83.2, GEPA: 85.0, Ours: 89.1 }
+        },
+        {
+          name: "LiveMath",
+          yMin: 20,
+          yMax: 45,
+          values: { NoSkill: 26.7, Human: 28.1, LLM: 29.1, Trace: 33.7, TextGrad: 24.9, GEPA: 32.2, Ours: 42.9 }
+        },
+        {
+          name: "ALFWorld",
+          yMin: 50,
+          yMax: 87,
+          values: { NoSkill: 60.8, Human: 54.7, LLM: 70.4, Trace: 73.4, TextGrad: 67.5, GEPA: 75.4, Ours: 84.3 }
+        }
+      ]
+    };
+
+    function renderMethodComparison() {
+      const grid = document.getElementById("method-comparison-grid");
+      const legend = document.getElementById("method-comparison-legend");
+      if (!grid || !legend) return;
+
+      methodComparison.methods.forEach((method) => {
+        const chip = document.createElement("span");
+        chip.className = "legend-chip";
+        chip.style.setProperty("--color", method.color);
+        chip.textContent = method.label;
+        legend.appendChild(chip);
+      });
+
+      methodComparison.benches.forEach((bench) => {
+        const panel = document.createElement("article");
+        panel.className = "benchmark-panel";
+
+        const top = document.createElement("div");
+        top.className = "benchmark-top";
+
+        const title = document.createElement("h4");
+        title.textContent = bench.name;
+
+        const ours = bench.values.Ours;
+        const bestBaseline = Math.max(
+          ...methodComparison.methods
+            .filter((method) => method.key !== "Ours")
+            .map((method) => bench.values[method.key])
+        );
+        const delta = ours - bestBaseline;
+
+        const deltaPill = document.createElement("span");
+        deltaPill.className = "delta-pill";
+        deltaPill.textContent = `SkillOpt +${delta.toFixed(1)}`;
+
+        top.appendChild(title);
+        top.appendChild(deltaPill);
+
+        const stage = document.createElement("div");
+        stage.className = "bar-stage";
+
+        const axis = document.createElement("span");
+        axis.className = "axis-range";
+        axis.textContent = `y ${bench.yMin}-${bench.yMax}`;
+        stage.appendChild(axis);
+
+        methodComparison.methods.forEach((method) => {
+          const value = bench.values[method.key];
+          const height = Math.max(4, ((value - bench.yMin) / (bench.yMax - bench.yMin)) * 100);
+          const bar = document.createElement("div");
+          bar.className = method.key === "Ours" ? "method-bar skillopt" : "method-bar";
+          bar.style.setProperty("--h", `${height}%`);
+          bar.style.setProperty("--color", method.color);
+          bar.title = `${method.label}: ${value.toFixed(1)}`;
+          bar.setAttribute("aria-label", `${bench.name} ${method.label} score ${value.toFixed(1)}`);
+
+          if (method.key === "Ours") {
+            const valueLabel = document.createElement("span");
+            valueLabel.textContent = value.toFixed(1);
+            bar.appendChild(valueLabel);
+          }
+
+          stage.appendChild(bar);
+        });
+
+        panel.appendChild(top);
+        panel.appendChild(stage);
+        grid.appendChild(panel);
+      });
+    }
+
+    renderMethodComparison();
+
     const evolutionSteps = [
       {
         step: "Baseline",
